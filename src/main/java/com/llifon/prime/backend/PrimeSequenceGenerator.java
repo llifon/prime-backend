@@ -21,6 +21,8 @@ public interface PrimeSequenceGenerator<T extends Number> {
      * @return An iterator for all of the numbers that were generated. An iterator is chosen here in-order to
      * support a sequence amount that's larger than the capacity of {@link Integer#MAX_VALUE} which could be
      * an issue if we were to return an ArrayList for example.
+     *
+     * @throws IllegalArgumentException {from} must be less than or equal to {upTo}
      */
     Iterator<T> Generate(T from, T upTo, boolean inclusive);
 }

@@ -24,9 +24,17 @@ public class BigIntegerPrimeSequenceGenerator implements PrimeSequenceGenerator<
      * @return An iterator for all of the numbers that were generated. An iterator is chosen here in-order to
      * support a sequence amount that's larger than the capacity of {@link Integer#MAX_VALUE} which could be
      * an issue if we were to return an ArrayList for example.
+     *
+     * @throws IllegalArgumentException {from} must be less than or equal to {upTo}
      */
     @Override
     public Iterator<BigInteger> Generate(BigInteger from, BigInteger upTo, boolean inclusive) {
+
+        if (from.compareTo(upTo) > 0)
+        {
+            throw new IllegalArgumentException(String.format("{from} (%s) must be less than or equal to {upTo} (%s)", from, upTo));
+        }
+
         BigInteger tracker = from.subtract(BigInteger.ONE); // If from = 2, then first 'next prime' would be 3.
 
         LinkedList<BigInteger> results = new LinkedList<>();

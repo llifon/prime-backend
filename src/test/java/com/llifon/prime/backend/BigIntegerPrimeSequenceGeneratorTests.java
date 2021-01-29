@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 public class BigIntegerPrimeSequenceGeneratorTests {
 
@@ -70,6 +72,31 @@ public class BigIntegerPrimeSequenceGeneratorTests {
         primes.forEachRemaining(actualList::add);
 
         assertThat(earlyPrimes).containsExactlyElementsOf(actualList);
+    }
+
+    /**
+     * Tests that a {@link IllegalArgumentException} is thrown if the FROM value is larger than the UPTO value.
+     */
+    @Test
+    public void exceptionThrownIfFromIsLargerThanUpTo()
+    {
+        BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
+
+        assertThatThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.ONE, false))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("{from} (2) must be less than or equal to {upTo} (1)");
+    }
+
+    /**
+     * Tests that no {@link IllegalArgumentException} is thrown if the FROM value is equal to the UPTO value.
+     */
+    @Test
+    public void exceptionNotThrownIfFromEqualsUpTo()
+    {
+        BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
+
+        assertThatNoException().isThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.TWO, true));
+        assertThatNoException().isThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.TWO, false));
     }
 
     /**
