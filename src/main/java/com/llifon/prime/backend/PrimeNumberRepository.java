@@ -24,6 +24,14 @@ public interface PrimeNumberRepository extends JpaRepository<PrimeNumberEntity, 
      * @return All known prime numbers which exist within the given value range. The amount of data
      * returned is conditional on the paginated request.
      */
-    @Query("SELECT x.primeNumber FROM PrimeNumberEntity x WHERE x.primeNumber >= ?1 and x.primeNumber <= ?2")
+    @Query("SELECT x.primeNumber FROM PrimeNumberEntity x WHERE x.primeNumber >= ?1 and x.primeNumber <= ?2 ORDER BY x.primeNumber ASC")
     Page<Long> findPrimesInRange(Pageable pageable, Long start, Long end);
+
+    /**
+     * Gets the largest prime number in the repository.
+     *
+     * @return The largest prime value.
+     */
+    @Query("SELECT max(x.primeNumber) FROM PrimeNumberEntity x")
+    Long getLargestPrime();
 }
