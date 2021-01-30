@@ -47,10 +47,6 @@ public class PrimeNumberController {
                                                     @RequestParam(name = "page", defaultValue = "0") Long page,
                                                     @RequestParam(name = "size", defaultValue = "100") Long size) {
 
-        if (page < 0 || page > Integer.MAX_VALUE) {
-            throw new IllegalArgumentException("Overflow?");
-        }
-
         var ret = this.service.RequestPagedPrimeNumbers(from, to, size.intValue(), page.intValue());
         logger.info("Serving client request of {}", ret.getRequestInfo());
         return ret;

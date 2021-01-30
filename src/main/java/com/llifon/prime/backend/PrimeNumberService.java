@@ -41,6 +41,27 @@ public class PrimeNumberService {
                                                         long upTo,
                                                         int maxDataPerPage,
                                                         int pageIndex) {
+        if (maxDataPerPage < 0) {
+            throw new IllegalArgumentException("Requested page size must be >= 0");
+        }
+
+        if (pageIndex < 0) {
+            throw new IllegalArgumentException("Requested page index must be >= 0");
+        }
+
+        if (startingFrom < 0) {
+            throw new IllegalArgumentException("from value must be >= 0");
+        }
+
+        if (upTo < startingFrom) {
+            throw new IllegalArgumentException("'to' param must be > 'from' value");
+        }
+
+        var max = this.repository.getLargestPrime();
+        if (upTo > max)
+        {
+            throw new IllegalArgumentException("This service does not support primes larger than " + max);
+        }
 
         Pageable pageable = PageRequest.of(pageIndex, maxDataPerPage);
 
