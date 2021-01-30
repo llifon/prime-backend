@@ -53,4 +53,14 @@ public class PrimeNumberRequest {
     public void setViewSize(int viewSize) {
         this.viewSize = viewSize;
     }
+
+    @Override
+    public String toString() {
+        return "PrimeNumberRequest{" +
+                "requestStart=" + requestStart +
+                ", requestEnd=" + requestEnd +
+                ", pageIndex=" + pageIndex +
+                ", viewSize=" + viewSize +
+                '}';
+    }
 }

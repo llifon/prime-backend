@@ -9,7 +9,9 @@ import java.time.Duration;
 import java.time.Instant;
 
 /**
- * The service for providing prime number sequences.
+ * The service for providing prime number sequences. While we could have technically used
+ * Page and Pageable from Spring, this service exposing raw fields and a custom response seemed
+ * better for reducing clutter and for decoupling CLIENT and SERVER implementations from Spring.
  */
 @Service
 public class PrimeNumberService {
