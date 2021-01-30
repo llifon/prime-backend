@@ -41,8 +41,8 @@ public class PrimeNumberService {
                                                         long upTo,
                                                         int maxDataPerPage,
                                                         int pageIndex) {
-        if (maxDataPerPage < 0) {
-            throw new IllegalArgumentException("Requested page size must be >= 0");
+        if (maxDataPerPage < 1) {
+            throw new IllegalArgumentException("Requested page size must be > 0");
         }
 
         if (pageIndex < 0) {
