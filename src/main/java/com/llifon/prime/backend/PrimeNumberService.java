@@ -29,6 +29,16 @@ public class PrimeNumberService {
     }
 
     /**
+     * Gets the largest prime that this service can serve.
+     *
+     * @return The largest possible prime that can be provided by this service.
+     */
+    public long requestLargestSupportedPrime()
+    {
+        return this.repository.getLargestPrime();
+    }
+
+    /**
      * Generates a response containing prime numbers which exist within a given range.
      *
      * @param startingFrom   The start of the range from within which prime numbers should get sought.
