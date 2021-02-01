@@ -37,7 +37,7 @@ public class PrimeNumberService {
      * @param pageIndex      The index of the page whose data should be returned.
      * @return The official response containing the requested data
      */
-    public PrimeNumberResponse RequestPagedPrimeNumbers(long startingFrom,
+    public PrimeNumberResponse requestPagedPrimeNumbers(long startingFrom,
                                                         long upTo,
                                                         int maxDataPerPage,
                                                         int pageIndex) {

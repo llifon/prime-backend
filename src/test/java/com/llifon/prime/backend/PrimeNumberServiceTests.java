@@ -19,9 +19,9 @@ public class PrimeNumberServiceTests {
      */
     @Test
     void argumentExceptionWhenUpToLessThanStart() {
-        service.RequestPagedPrimeNumbers(2, 2, 1, 1);
+        service.requestPagedPrimeNumbers(2, 2, 1, 1);
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.RequestPagedPrimeNumbers(2, 1, 1, 1));
+                .isThrownBy(() -> service.requestPagedPrimeNumbers(2, 1, 1, 1));
     }
 
     /**
@@ -29,9 +29,9 @@ public class PrimeNumberServiceTests {
      */
     @Test
     void argumentExceptionWhenStartIsNegative() {
-        service.RequestPagedPrimeNumbers(0, 2, 1, 1);
+        service.requestPagedPrimeNumbers(0, 2, 1, 1);
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.RequestPagedPrimeNumbers(-1, 1, 1, 1));
+                .isThrownBy(() -> service.requestPagedPrimeNumbers(-1, 1, 1, 1));
     }
 
     /**
@@ -39,13 +39,13 @@ public class PrimeNumberServiceTests {
      */
     @Test
     void argumentExceptionWhenViewSizeIsZeroOrNegative() {
-        service.RequestPagedPrimeNumbers(2, 2, 1, 1);
+        service.requestPagedPrimeNumbers(2, 2, 1, 1);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.RequestPagedPrimeNumbers(2, 2, 0, 1));
+                .isThrownBy(() -> service.requestPagedPrimeNumbers(2, 2, 0, 1));
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.RequestPagedPrimeNumbers(2, 2, -1, 1));
+                .isThrownBy(() -> service.requestPagedPrimeNumbers(2, 2, -1, 1));
     }
 
     /**
@@ -53,9 +53,9 @@ public class PrimeNumberServiceTests {
      */
     @Test
     void argumentExceptionWhenPageIsNegative() {
-        service.RequestPagedPrimeNumbers(2, 2, 1, 0);
+        service.requestPagedPrimeNumbers(2, 2, 1, 0);
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> service.RequestPagedPrimeNumbers(2, 2, 1, -1));
+                .isThrownBy(() -> service.requestPagedPrimeNumbers(2, 2, 1, -1));
     }
 
 }

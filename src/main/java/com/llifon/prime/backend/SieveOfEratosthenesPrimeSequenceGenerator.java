@@ -39,7 +39,7 @@ public class SieveOfEratosthenesPrimeSequenceGenerator implements PrimeSequenceG
      * @throws IllegalArgumentException {from} must be less than or equal to {upTo}
      */
     @Override
-    public Iterator<Integer> Generate(Integer from, Integer upTo, boolean inclusive) {
+    public Iterator<Integer> generate(Integer from, Integer upTo, boolean inclusive) {
 
         if (from.compareTo(upTo) > 0)
         {

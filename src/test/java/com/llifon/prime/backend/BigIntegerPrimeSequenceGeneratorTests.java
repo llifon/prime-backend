@@ -21,7 +21,7 @@ public class BigIntegerPrimeSequenceGeneratorTests {
     @Test
     public void includesFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToTrue() {
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
-        var primes = generator.Generate(BigInteger.TWO, BigInteger.valueOf(13), true);
+        var primes = generator.generate(BigInteger.TWO, BigInteger.valueOf(13), true);
 
         BigInteger[] earlyPrimes = {
                 BigInteger.valueOf(2), BigInteger.valueOf(3),
@@ -41,7 +41,7 @@ public class BigIntegerPrimeSequenceGeneratorTests {
     @Test
     public void omitFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToTrue() {
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
-        var primes = generator.Generate(BigInteger.TWO, BigInteger.valueOf(14), true);
+        var primes = generator.generate(BigInteger.TWO, BigInteger.valueOf(14), true);
 
         BigInteger[] earlyPrimes = {
                 BigInteger.valueOf(2), BigInteger.valueOf(3),
@@ -61,7 +61,7 @@ public class BigIntegerPrimeSequenceGeneratorTests {
     @Test
     public void omitFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToFalse() {
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
-        var primes = generator.Generate(BigInteger.TWO, BigInteger.valueOf(13), false);
+        var primes = generator.generate(BigInteger.TWO, BigInteger.valueOf(13), false);
 
         BigInteger[] earlyPrimes = {
                 BigInteger.valueOf(2), BigInteger.valueOf(3),
@@ -82,7 +82,7 @@ public class BigIntegerPrimeSequenceGeneratorTests {
     {
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
 
-        assertThatThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.ONE, false))
+        assertThatThrownBy(() -> generator.generate(BigInteger.TWO, BigInteger.ONE, false))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("{from} (2) must be less than or equal to {upTo} (1)");
     }
@@ -95,8 +95,8 @@ public class BigIntegerPrimeSequenceGeneratorTests {
     {
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
 
-        assertThatNoException().isThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.TWO, true));
-        assertThatNoException().isThrownBy(() -> generator.Generate(BigInteger.TWO, BigInteger.TWO, false));
+        assertThatNoException().isThrownBy(() -> generator.generate(BigInteger.TWO, BigInteger.TWO, true));
+        assertThatNoException().isThrownBy(() -> generator.generate(BigInteger.TWO, BigInteger.TWO, false));
     }
 
     /**
@@ -110,7 +110,7 @@ public class BigIntegerPrimeSequenceGeneratorTests {
         Instant now = Instant.now();
 
         BigIntegerPrimeSequenceGenerator generator = new BigIntegerPrimeSequenceGenerator();
-        generator.Generate(BigInteger.TWO, BigInteger.valueOf(1000000), true);
+        generator.generate(BigInteger.TWO, BigInteger.valueOf(1000000), true);
         Instant end = Instant.now();
 
         System.out.printf("BigInteger implementation took %d ms to execute 1 range of 2 - 1,000,000",

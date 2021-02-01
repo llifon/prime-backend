@@ -18,7 +18,7 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
     @Test
     public void includesFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToTrue() {
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
-        var primes = generator.Generate(2, 13, true);
+        var primes = generator.generate(2, 13, true);
 
         Integer[] earlyPrimes = {
                 2, 3,
@@ -38,7 +38,7 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
     @Test
     public void omitFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToTrue() {
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
-        var primes = generator.Generate(2, 14, true);
+        var primes = generator.generate(2, 14, true);
 
         Integer[] earlyPrimes = {
                 2, 3,
@@ -58,7 +58,7 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
     @Test
     public void omitFinalPrimeWhenUpToValueIsPrimeAndInclusiveSetToFalse() {
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
-        var primes = generator.Generate(2, 13, false);
+        var primes = generator.generate(2, 13, false);
 
         Integer[] earlyPrimes = {
                 2, 3,
@@ -78,7 +78,7 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
     public void exceptionThrownIfFromIsLargerThanUpTo() {
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
 
-        assertThatThrownBy(() -> generator.Generate(2, 1, false))
+        assertThatThrownBy(() -> generator.generate(2, 1, false))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("{from} (2) must be less than or equal to {upTo} (1)");
     }
@@ -90,8 +90,8 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
     public void exceptionNotThrownIfFromEqualsUpTo() {
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
 
-        assertThatNoException().isThrownBy(() -> generator.Generate(2, 2, true));
-        assertThatNoException().isThrownBy(() -> generator.Generate(2, 2, false));
+        assertThatNoException().isThrownBy(() -> generator.generate(2, 2, true));
+        assertThatNoException().isThrownBy(() -> generator.generate(2, 2, false));
     }
 
     /**
@@ -104,7 +104,7 @@ public class SieveOfEratosthenesPrimeSequenceGeneratorTests {
         Instant now = Instant.now();
 
         SieveOfEratosthenesPrimeSequenceGenerator generator = new SieveOfEratosthenesPrimeSequenceGenerator();
-        generator.Generate(2, 1000000, true);
+        generator.generate(2, 1000000, true);
         Instant end = Instant.now();
 
         System.out.printf("Integer implementation took %d ms to execute 1 range of 2 - 1,000,000",

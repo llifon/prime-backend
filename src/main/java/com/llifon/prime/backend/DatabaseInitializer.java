@@ -78,7 +78,7 @@ public class DatabaseInitializer implements ApplicationRunner {
         for (final var object : batchRanges) {
             Callable<Boolean> c = () -> {
                 List<PrimeNumberEntity> primeList = new LinkedList<>();
-                var primes = generator.Generate(object.getKey(), object.getValue(), false);
+                var primes = generator.generate(object.getKey(), object.getValue(), false);
                 while (primes.hasNext()) {
                     var prime = new PrimeNumberEntity();
                     prime.setPrimeNumber((long) primes.next());

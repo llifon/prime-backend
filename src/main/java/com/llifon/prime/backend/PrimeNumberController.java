@@ -49,7 +49,7 @@ public class PrimeNumberController {
                                                     @RequestParam(name = "page", defaultValue = "0") Long page,
                                                     @RequestParam(name = "size", defaultValue = "100") Long size) {
 
-        var ret = this.service.RequestPagedPrimeNumbers(from, to, size.intValue(), page.intValue());
+        var ret = this.service.requestPagedPrimeNumbers(from, to, size.intValue(), page.intValue());
         logger.info("Serving client request of {}", ret.getRequestInfo());
         return ret;
     }

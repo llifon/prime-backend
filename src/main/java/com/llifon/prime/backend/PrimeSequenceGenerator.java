@@ -24,5 +24,5 @@ public interface PrimeSequenceGenerator<T extends Number> {
      *
      * @throws IllegalArgumentException {from} must be less than or equal to {upTo}
      */
-    Iterator<T> Generate(T from, T upTo, boolean inclusive);
+    Iterator<T> generate(T from, T upTo, boolean inclusive);
 }

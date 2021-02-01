@@ -28,7 +28,7 @@ public class BigIntegerPrimeSequenceGenerator implements PrimeSequenceGenerator<
      * @throws IllegalArgumentException {from} must be less than or equal to {upTo}
      */
     @Override
-    public Iterator<BigInteger> Generate(BigInteger from, BigInteger upTo, boolean inclusive) {
+    public Iterator<BigInteger> generate(BigInteger from, BigInteger upTo, boolean inclusive) {
 
         if (from.compareTo(upTo) > 0)
         {
