@@ -3,6 +3,7 @@ package com.llifon.prime.backend;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,6 +43,7 @@ public class PrimeNumberController {
     }
 
     @GetMapping(value = PRIME_API, produces = MediaType.APPLICATION_JSON_VALUE)
+    @CrossOrigin(origins = "*") // TODO: Remove this in production
     public PrimeNumberResponse providePrimeSequence(@RequestParam(name = "from", defaultValue = "2") Long from,
                                                     @RequestParam(name = "to") Long to,
                                                     @RequestParam(name = "page", defaultValue = "0") Long page,
